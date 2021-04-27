@@ -54,3 +54,40 @@ class OktaOidcAuthenticateTask: OktaOidcTask {
         }
     }
 }
+
+extension OktaOidcAuthenticateTask{
+    func getAuthCode(sessionToken: String,
+                     delegate: OktaNetworkRequestCustomizationDelegate? = nil,
+                     callback: @escaping (String?, OktaOidcError?) -> Void) {
+        self.downloadOidcConfiguration() { oidConfig, error in
+            guard let oidConfig = oidConfig else {
+                callback(nil, error)
+                return
+            }
+            
+            let codeVerifier = OKTAuthorizationRequest.generateCodeVerifier()
+            let codeChallenge = OKTAuthorizationRequest.codeChallengeS256(forVerifier: codeVerifier)
+            let state = OKTAuthorizationRequest.generateState()
+            var additionalParameters = self.config.additionalParams ?? [String: String]()
+            additionalParameters["sessionToken"] = sessionToken
+            
+            let request = OKTAuthorizationRequest(
+                configuration: oidConfig,
+                clientId: self.config.clientId,
+                clientSecret: nil,
+                scope: self.config.scopes,
+                redirectURL: self.config.redirectUri,
+                responseType: OKTResponseTypeCode,
+                state: state,
+                nonce: OKTAuthorizationRequest.generateState(),
+                codeVerifier: codeVerifier,
+                codeChallenge: codeChallenge,
+                codeChallengeMethod: OKTOAuthorizationRequestCodeChallengeMethodS256,
+                additionalParameters: additionalParameters
+            )
+            OKTAuthState.getAuthCode(withAuthRequest: request, delegate: delegate) { (authCode, error) in
+                callback(authCode,error)
+            }
+        }
+    }
+}

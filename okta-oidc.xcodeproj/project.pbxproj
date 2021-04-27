@@ -33,6 +33,8 @@
 		2F32CCA3229D6801003A6768 /* OktaOidc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F32CA1E229D38D4003A6768 /* OktaOidc.framework */; };
 		2F32CCA4229D6A4E003A6768 /* OktaOidc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F32CA1E229D38D4003A6768 /* OktaOidc.framework */; };
 		2F32CCA8229D6B59003A6768 /* OktaOidc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2F32CA1E229D38D4003A6768 /* OktaOidc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5CAA604F26380A0500293B44 /* OktaAuthCode+Okta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA604E26380A0500293B44 /* OktaAuthCode+Okta.swift */; };
+		5CAA605026380A0500293B44 /* OktaAuthCode+Okta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA604E26380A0500293B44 /* OktaAuthCode+Okta.swift */; };
 		9226284326171FD3002F6BC4 /* XCTestCase+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9226284226171FD3002F6BC4 /* XCTestCase+Utils.swift */; };
 		922628792617553F002F6BC4 /* OktaOidcHttpApiProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922628782617553E002F6BC4 /* OktaOidcHttpApiProtocol.swift */; };
 		922628DB261B1F90002F6BC4 /* XCUIElement+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922628DA261B1F90002F6BC4 /* XCUIElement+Utils.swift */; };
@@ -373,6 +375,7 @@
 		2F32CC7F229D4FC0003A6768 /* OktaOidcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OktaOidcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F32CC8A229D4FCD003A6768 /* OktaScenarios.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OktaScenarios.swift; sourceTree = "<group>"; };
 		2F32CC8B229D4FCD003A6768 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CAA604E26380A0500293B44 /* OktaAuthCode+Okta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OktaAuthCode+Okta.swift"; sourceTree = "<group>"; };
 		9226284226171FD3002F6BC4 /* XCTestCase+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utils.swift"; sourceTree = "<group>"; };
 		922628782617553E002F6BC4 /* OktaOidcHttpApiProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OktaOidcHttpApiProtocol.swift; sourceTree = "<group>"; };
 		922628DA261B1F90002F6BC4 /* XCUIElement+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Utils.swift"; sourceTree = "<group>"; };
@@ -966,6 +969,7 @@
 				2F32CB00229D3A16003A6768 /* Tasks */,
 				A17E39C62357DB0F00837873 /* OIDAuthorizationService+Okta.swift */,
 				A17E39CB2357DB0F00837873 /* OIDAuthState+Okta.swift */,
+				5CAA604E26380A0500293B44 /* OktaAuthCode+Okta.swift */,
 				A17E39C92357DB0F00837873 /* OktaOidcEndpoint.swift */,
 				922628782617553E002F6BC4 /* OktaOidcHttpApiProtocol.swift */,
 				A17E39C52357DB0F00837873 /* OktaOidcRestApi.swift */,
@@ -1380,6 +1384,7 @@
 				2F32CB54229D3A16003A6768 /* OktaOidcKeychain.swift in Sources */,
 				A17E39D42357DB1000837873 /* OktaOidcEndpoint.swift in Sources */,
 				A17E38A4234CFEED00837873 /* OKTEndSessionResponse.m in Sources */,
+				5CAA604F26380A0500293B44 /* OktaAuthCode+Okta.swift in Sources */,
 				A17E38A6234CFEED00837873 /* OKTResponseTypes.m in Sources */,
 				E2FB61312536779800D26EDC /* OKTAuthorizationRequest.m in Sources */,
 				A17E38A9234CFEED00837873 /* OKTRegistrationRequest.m in Sources */,
@@ -1506,6 +1511,7 @@
 				A17E3933234D2E7100837873 /* OKTErrorUtilities.m in Sources */,
 				A17E3934234D2E7100837873 /* OKTFieldMapping.m in Sources */,
 				A17E39DD2357DB4E00837873 /* OktaOidcSignOutHandlerMAC.swift in Sources */,
+				5CAA605026380A0500293B44 /* OktaAuthCode+Okta.swift in Sources */,
 				A17E3935234D2E7100837873 /* OKTGrantTypes.m in Sources */,
 				A17E3936234D2E7100837873 /* OKTRegistrationRequest.m in Sources */,
 				92AF826326209E1C004D157D /* OktaOidcHttpApiProtocol.swift in Sources */,
@@ -1802,13 +1808,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K569U2GN52;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.okta.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ok-ta.Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1820,13 +1827,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K569U2GN52;
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.okta.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ok-ta.Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

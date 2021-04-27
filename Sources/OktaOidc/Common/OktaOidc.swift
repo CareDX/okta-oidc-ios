@@ -89,3 +89,20 @@ public class OktaOidc: NSObject {
     // Holds the browser session
     var currentUserSessionTask: OktaOidcBrowserTask?
 }
+
+extension OktaOidc{
+    @objc public func authCode(withSessionToken sessionToken: String,callback: @escaping ((String?, Error?) -> Void)) {
+        let oktaAPI = OktaOidcRestApi()
+        oktaAPI.requestCustomizationDelegate = configuration.requestCustomizationDelegate
+
+        let task = OktaOidcAuthenticateTask(config: configuration, oktaAPI: oktaAPI)
+        task.getAuthCode(sessionToken: sessionToken,delegate: configuration.requestCustomizationDelegate) { (authCode, error) in
+            guard let code = authCode else {
+                callback(nil, error)
+                return
+            }
+            callback(code, nil)
+        }
+        
+    }
+}
